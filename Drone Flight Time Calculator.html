@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=UTF-8>
+    <title>Drone Flight Time Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Electrolize&display=swap" rel="stylesheet">
+    <style>
+      body{
+        font-family: 'Electrolize';
+        text-transform: capitalize;
+      }  
+
+      .container{
+        width: 90%;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      
+      fieldset{
+        background-color: #2f9a60;
+        color: white;
+        /* border-radius: 20px; */
+      
+      }
+      legend h1{
+        background-color: white;
+        color: black;
+        padding: 5px 10px;
+        font-weight: bold;
+      }
+      .textInputs label{
+        padding-right: 5px;
+      }
+
+       .textInputs input{
+        text-align: right;
+        width: 100px;
+      }
+
+      .battInputs{
+        display: flex; 
+        text-align: center; 
+        
+      }
+
+       .battInputs .textInputs{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 1%;
+      }
+  
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="" oninput="flightTime.value=parseInt(battSize.value)+parseInt(cellCount.value)">
+        <fieldset class="battery">
+            <legend><h1>battery</h1></legend>    
+
+              <div class="battInputs">
+                <div class="textInputs">
+                  <label for="battSize">battery size</label>
+                  <input type="number" id="battSize" name="battSize" value="" min="1000" max="10000" step="250" placeholder="mAh">  
+                </div>
+                <div class="textInputs">
+                  <label for="cellCount">number of cells</label> 
+                  <input type="number" id="cellCount" name="cellCount" min="3" max="12" step="1" value="" placeholder="3-12">
+                </div>       
+                <div class="textInputs">
+                  <label for="battUse%">battery use %</label>
+                  <input type="number" id="" name="battUse%" min="65" max="80" step="5" value="" placeholder="65-80%">
+                </div>
+                
+              </div>
+                
+
+        </fieldset>
+
+        <fieldset class="drone">
+            <legend><h1>drone</h1></legend>
+                    <div class="droneInputs">
+                      <div class="textInputs">
+                        <label for="droneTOW">drone's take off weight</label>
+                        <input type="text" id="" name="droneTOW" value=""placeholder="grams">    
+                      </div>
+            <fieldset>
+                <legend><h2>motors</h2></legend>
+                        <label for="motorCount">number of motors</label>
+                        <input type="range" list="tickmarks" name="motorCount" min="4" max="12" value="4" step="2">
+                        <datalist id="tickmarks">
+                          <option value="4" label="4"></option>
+                          <option value="6" label="6"></option>
+                          <option value="8" label="8"></option>
+                          <option value="10" label="10"></option>
+                          <option value="12" label="12"></option>
+                        </datalist>                
+
+                        <div class="textInputs">  
+                          <label for="avgCurrent">average current use</label>
+                          <input type="number" id="" name="avgCurrent" min="10" max="200" step="1" value="" placeholder="Amps">            
+                        </div>
+                      </div>
+            </fieldset>
+        </fieldset>
+        
+        <div class="flightAttitude">            
+          <fieldset>
+            <legend><h1>flight attitude</h1></legend>
+              <div class="inputs"> 
+              <input type="radio" id="slow" name="flightAttitude">
+              <label for="slow">slow</label><br/>
+              
+              <input type="radio" id="cruise" name="flightAttitude">
+              <label for="cruise">cruise</label><br/>
+              
+              <input type="radio" id="acrobatic" name="flightAttitude">
+              <label for="acrobatic">acrobatic</label>
+          </div>
+          </fieldset>
+        </div>
+        
+        <fieldset class="flightTime">
+          <legend><h1>flight time</h1></legend>
+          
+          <output name="flightTime" for="cellCount battSize">minutes</output>
+          
+           
+          
+      </div>
+    </div>
+        
+  </body>
+</html>
+
+
