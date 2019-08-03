@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=UTF-8>
+        <title>Drone Flight Time Calculator boxes</title>
+        <link href="https://fonts.googleapis.com/css?family=Electrolize&display=swap" rel="stylesheet">
+       
+        <style>
+
+            h1, h2{
+                background-color: white;
+                color: black;
+                font-weight: bold;
+            }
+            
+            body{
+                background-color: gray;     
+                font-family: 'Electrolize';
+                text-transform: capitalize;
+                font-weight: 600;
+
+            }
+            .container {
+              
+                width: 90%;
+                max-width: 750px;
+                margin: 0 auto;
+                margin-top: 50px;
+            }
+
+           
+            fieldset{
+              
+                background-image: linear-gradient(to bottom right, #ffd9eb, #0086ff);
+
+                padding: 5px 20px 30px 20px;
+                border-radius: 10px;
+            }
+
+            .Battery{
+                background-color: rgb(255, 98, 98);
+                background-color: #6edece;
+            }
+
+            .Drone{
+                background-color: orange;
+                background-color: #ffa500cc;
+            }
+
+            .flightTime{
+                background-color: yellow;
+                background-color: #ecec32;
+            }
+  
+            section {
+                display: flex;
+                justify-content: space-around;                
+            }
+            @media only screen and (max-width: 470px) {
+                section { display: block}
+            }
+
+            label{
+                padding: 0 5px 0 0;
+            }
+
+            .droneTOW {
+                margin: 0 0 15px 25px;
+            }
+
+
+            @media only screen and (max-width: 470px) {
+                .droneTOW { 
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    }
+                .avgCurrent {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center; 
+                }
+            }
+
+            @media only screen and (max-width: 986px) {
+                label { padding-left: 0}
+                
+            }
+            input {
+               
+                text-align: right; 
+                min-width: 90px;                 
+                max-width: 100px;
+                padding: 5px;     
+                margin: 8px 0 0 0;                                                                                                              
+            }
+
+            @media only screen and (max-width: 986px) {
+            output {
+                background-color: white;
+                padding: 5px 10px 5px 20px;
+                margin-left: 27px;
+            }
+            }
+
+            @media only screen and (max-width: 470px) {
+                output { 
+                    padding: 0;
+                    margin: 0 60px;   
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;                 
+            }
+            }
+            
+            legend h1, h2{
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            font-weight: bold;
+            }
+
+            .displayGrid {
+                display: grid;
+                text-align: -webkit-center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <main class="container">
+        <form action="" oninput="flightTime.value=  
+        
+
+                                (MAh.valueAsNumber / 1000) *
+                                (CellCount.valueAsNumber /4) *
+                                (usePercent.valueAsNumber /100) / 
+                                (avgCurrent.valueAsNumber) / 
+                                (droneTOW.valueAsNumber/1800) * 60">
+
+
+            <fieldset class="Battery">
+                <legend><h1>battery</h1></legend>
+                <section>
+                    <div class="displayGrid">
+                        <label for="MAh">battery mAh</label>
+                        <input class="MAh" id="MAh" type="number" min="1000" max="10000" step="250" placeholder="mAh">
+                    </div>
+
+                    <div class="displayGrid">
+                        <label for="CellCount">number of cells</label>
+                        <input class="CellCount" id="CellCount" type="number" min="3" max="12" step="1" value="" placeholder="3-12">
+                    </div>
+                    <div class="displayGrid">
+                        <label for="usePercent">Battery use %</label>
+                        <input class="usePercent" id="usePercent" type="number" min="65" max="80" step="5" value="" placeholder="65-80%">
+                    </div>                    
+                </section>
+            </fieldset>
+
+            <fieldset class="Drone">
+                <legend><h1>drone</h1></legend>
+                    <div class="droneTOW">
+                    <label for="droneTOW">drone's take off weight</label><br>
+                    <input type="number" id="droneTOW" name="droneTOW" value="" step="10" placeholder="based on 1800 grams">
+                    </div>
+                        <fieldset class="motors">
+                            <legend><h2>motors</h2></legend>
+                            <div class="avgCurrent">
+                                <label for="avgCurrent">average current use</label>
+                                <input type="number" id="avgCurrent" name="avgCurrent" min="10" max="200" step="1" value="" placeholder="Amps">
+                            </div>
+                        </fieldset>
+            </fieldset>
+
+
+            <fieldset class="flightTime">
+                <legend><h1>Flight Time</h1></legend>
+                <output name="flightTime" for="MAh CellCount usePercent avgCurrent droneTOW">minutes</output>
+            </fieldset>
+            </form>
+        </main>
+
+        
+    </body>
+</html>
